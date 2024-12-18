@@ -70,19 +70,41 @@
   <ul id="nameList"></ul>
 
   <script>
+    // 로컬 스토리지에서 이름 목록 가져오기
+    function loadNames() {
+      const savedNames = JSON.parse(localStorage.getItem('thankfulNames')) || [];
+      const nameList = document.getElementById('nameList');
+      nameList.innerHTML = ''; // 기존 리스트 초기화
+      savedNames.forEach(name => {
+        const listItem = document.createElement('li');
+        listItem.textContent = name;
+        nameList.appendChild(listItem);
+      });
+    }
+
+    // 이름 추가
     function addName() {
       const nameInput = document.getElementById('nameInput');
       const nameList = document.getElementById('nameList');
+      const savedNames = JSON.parse(localStorage.getItem('thankfulNames')) || [];
 
       if (nameInput.value.trim() !== "") {
         const listItem = document.createElement('li');
         listItem.textContent = nameInput.value;
         nameList.appendChild(listItem);
-        nameInput.value = "";
+
+        // 로컬 스토리지에 이름 저장
+        savedNames.push(nameInput.value);
+        localStorage.setItem('thankfulNames', JSON.stringify(savedNames));
+
+        nameInput.value = ""; // 입력 필드 초기화
       } else {
         alert('이름을 입력해주세요!');
       }
     }
+
+    // 초기 로드 시 이름 불러오기
+    window.onload = loadNames;
   </script>
 </body>
 </html>
