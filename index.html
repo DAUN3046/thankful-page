@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>감사한 사람들</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #FAF3E0; /* 따뜻한 크림 화이트 */
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #D32F2F; /* 크리스마스 레드 */
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #1B5E20; /* 진한 초록 */
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+      border: 1px solid #B0BEC5; /* 은색 */
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #388E3C; /* 크리스마스 초록 */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2E7D32; /* 어두운 초록 */
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: left;
+    }
+    li {
+      background-color: #FFFFFF; /* 눈처럼 흰색 */
+      margin: 5px 0;
+      padding: 10px;
+      border: 1px solid #FFC107; /* 금색 */
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    li::before {
+      content: '🎄'; /* 크리스마스 아이콘 */
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎅 감사한 사람들 🎅</h1>
+  <p>감사한 사람의 이름을 적어보세요!</p>
+  <input type="text" id="nameInput" placeholder="이름을 입력하세요">
+  <button onclick="addName()">추가하기</button>
+  <ul id="nameList"></ul>
+
+  <script>
+    function addName() {
+      const nameInput = document.getElementById('nameInput');
+      const nameList = document.getElementById('nameList');
+
+      if (nameInput.value.trim() !== "") {
+        const listItem = document.createElement('li');
+        listItem.textContent = nameInput.value;
+        nameList.appendChild(listItem);
+        nameInput.value = "";
+      } else {
+        alert('이름을 입력해주세요!');
+      }
+    }
+  </script>
+</body>
+</html>
